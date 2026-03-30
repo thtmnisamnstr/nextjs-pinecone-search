@@ -1,0 +1,86 @@
+{
+  "name": "nextjs-pinecone-search",
+  "version": "0.1.0",
+  "description": "Plug-and-play Pinecone hybrid search for Next.js with automatic indexing",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thtmnisamnstr/nextjs-pinecone-search.git"
+  },
+  "homepage": "https://github.com/thtmnisamnstr/nextjs-pinecone-search#readme",
+  "bugs": {
+    "url": "https://github.com/thtmnisamnstr/nextjs-pinecone-search/issues"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "react": [
+        "./dist/react.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "docs"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist coverage .turbo",
+    "pack:dry": "npm pack --dry-run",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run clean && npm run typecheck && npm run build && npm run test"
+  },
+  "keywords": [
+    "nextjs",
+    "pinecone",
+    "hybrid-search",
+    "semantic-search",
+    "lexical-search",
+    "rerank"
+  ],
+  "peerDependencies": {
+    "next": ">=14.2.0",
+    "react": ">=18.2.0"
+  },
+  "dependencies": {
+    "@pinecone-database/pinecone": "^6.1.4",
+    "fast-glob": "^3.3.3",
+    "gpt-tokenizer": "^3.4.0",
+    "gray-matter": "^4.0.3",
+    "jiti": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.15",
+    "@types/react": "^18.3.28",
+    "@vitest/coverage-v8": "^3.2.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}
